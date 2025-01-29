@@ -10,6 +10,7 @@ import torch
 from torch.utils.data import DataLoader
 import torch.optim as optim
 import torch.nn as nn
+from torch.nn.functional import sigmoid
 from torcheval.metrics import (
     Mean, 
     BinaryAccuracy,
@@ -155,7 +156,10 @@ class TrainingEngine:
         self,
         inputs
     ):
-        return self.model(inputs)
+        logits = self.model(inputs)
+        probs = sigmoid(logits)
+        
+        return probs
 
     def evaluate(
         self,
