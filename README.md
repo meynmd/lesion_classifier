@@ -1,4 +1,4 @@
-# skin_classifier
+# lesion_classifier
 
 ## Installation
 - create and activate conda environment with python=3.9
