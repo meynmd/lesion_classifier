@@ -8,3 +8,5 @@ matplotlib
 scikit-learn
 albumentations
 pillow
+ipywidgets
+tensorflow>=2.16
