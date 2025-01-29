@@ -95,14 +95,25 @@ def main():
     transforms_train = A.Compose(
         [
             A.SmallestMaxSize(max_size=256),
-            A.ShiftScaleRotate(shift_limit=0.05, scale_limit=0.1, rotate_limit=180, p=0.5),
+            # A.ShiftScaleRotate(shift_limit=0.05, scale_limit=0.1, rotate_limit=180, p=0.5),
+            A.Affine(
+                scale=(0.9, 1.1), 
+                translate_percent=(-0.05, 0.05), 
+                rotate=(-180., 180.), 
+                shear=(-15, 15), 
+                interpolation=1, 
+                mask_interpolation=0, 
+                fit_output=False, 
+                keep_ratio=True, 
+                p=0.33
+            ),
             A.RandomCrop(height=224, width=224),
-            A.RGBShift(r_shift_limit=32, g_shift_limit=32, b_shift_limit=32, p=0.25),
+            A.RGBShift(r_shift_limit=16, g_shift_limit=16, b_shift_limit=16, p=0.1),
             A.RandomBrightnessContrast(
-                brightness_limit=(-0.2, 0.2), 
-                contrast_limit=(-0.2, 0.2),
+                brightness_limit=(-0.1, 0.1), 
+                contrast_limit=(-0.1, 0.1),
                 ensure_safe_range=True,
-                p=0.25
+                p=0.1
             ),
             A.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
             ToTensorV2(),
@@ -126,9 +137,14 @@ def main():
         data_root / 'validation.csv',
         transform=transforms_eval
     )
+    test_set = ImageDataset(
+        data_root / 'test.csv',
+        transform=transforms_eval
+    )
 
     train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_set, batch_size=64, shuffle=False)
+    test_loader = DataLoader(test_set, batch_size=64, shuffle=False)
 
     # determine how many steps to train for and warmup period
     epoch_length = len(train_loader)
@@ -157,6 +173,7 @@ def main():
         optimizer=optimizer,
         scheduler=scheduler,
         val_loader=val_loader,
+        test_loader=test_loader,
         save_dir=save_subdir,
         use_cuda=use_cuda,
         eval_freq=eval_freq,

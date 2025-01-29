@@ -79,9 +79,14 @@ def main():
         data_root / 'validation.csv',
         transform=model_transforms
     )
+    test_set = ImageDataset(
+        data_root / 'test.csv',
+        transform=model_transforms
+    )
 
     train_loader = DataLoader(train_set, batch_size=256, shuffle=True)
     val_loader = DataLoader(val_set, batch_size=64, shuffle=False)
+    test_loader = DataLoader(test_set, batch_size=64, shuffle=False)
 
     # determine how many steps to train for and warmup period
     epoch_length = len(train_loader)
@@ -110,6 +115,7 @@ def main():
         optimizer=optimizer,
         scheduler=scheduler,
         val_loader=val_loader,
+        test_loader=test_loader,
         save_dir=save_subdir,
         use_cuda=True,
         eval_freq=eval_freq,
