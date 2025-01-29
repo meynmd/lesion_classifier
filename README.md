@@ -20,7 +20,7 @@
 ## Results
 Models trained on Binary XEntropy loss for 20 epochs, with ADAM, base LR = .0002 with 2 epoch warmup and cosine decay. Initialization from ImageNet pretrained parameters. Classifier layer initizlied with Xavier.
 
-<img width="459" alt="Screenshot 2025-01-29 at 4 17 56 PM" src="https://github.com/user-attachments/assets/0103b126-338b-4692-a9af-9eb40b84b7da" />
+<img width="459" alt="Screenshot 2025-01-29 at 4 19 06 PM" src="https://github.com/user-attachments/assets/ed362860-6dea-4fc7-99c0-6d59c4a64627" />
 
 ### Baseline ResNet18 without Data Augmentations
 <img width="459" alt="Screenshot 2025-01-29 at 3 40 55 PM" src="https://github.com/user-attachments/assets/da1b63f5-396b-4ab5-8933-6cecbb4ec473" />
