@@ -32,12 +32,19 @@ The test set does not have to be split, of course, but for consistency of data l
 python scripts/prepare_split_data.py -d <image-root>/test -o <image-root>
 ```
 
-Scripts for training are also found in the `scripts` directory. Run a training script with the `-h` flag to see available and required arguments. For example, to get the usage for training a ResNeXt50/32x4d using data augmentations from Albumentations, run the command, `python scripts/train_resnext50_albumentations.py -h`.
+Scripts for training are also found in the `scripts` directory. Run a training script with the `-h` flag to see available and required arguments. For example, to get the usage for training a ResNeXt50/32x4d using data augmentations from Albumentations, run the command, `python scripts/train_resnext50_albumentations.py -h`:
+```
+usage: train_resnext50_albumentations.py [-h] --data-root DATA_ROOT --output-root OUTPUT_ROOT       
+                                         [--n-epochs N_EPOCHS] [--init-lr INIT_LR]                  
+                                         [--run-name RUN_NAME] [--eval-freq EVAL_FREQ]              
+                                         [--save-freq SAVE_FREQ] [--cuda]                           
+                                         [--batch-size BATCH_SIZE]  
+```
 
 Models, data utilities, and engine code can be found under `src`.
 
 ## Results
-Models trained on Binary XEntropy loss for 20 epochs, with ADAM, base LR = .0002 with 2 epoch warmup and cosine decay. Initialization from ImageNet pretrained parameters. Classifier layer initizlied with Xavier.
+The following models were trained on Binary XEntropy loss for 20 epochs, with ADAM, base LR = .0002 with 2 epoch warmup and cosine decay. Initialization from ImageNet pretrained parameters. Classifier layer initizlied with Xavier.
 
 <img width="459" alt="Screenshot 2025-01-29 at 4 19 06 PM" src="https://github.com/user-attachments/assets/ed362860-6dea-4fc7-99c0-6d59c4a64627" />
 
