@@ -23,6 +23,7 @@ from data.image_dataset import ImageDataset
 from engine.training_engine import TrainingEngine
 import models
 
+
 def get_args():
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument(
