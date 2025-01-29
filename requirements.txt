@@ -1,0 +1,10 @@
+numpy
+pandas
+torcheval
+tqdm
+tensorboard
+transformers
+matplotlib
+scikit-learn
+albumentations
+pillow
