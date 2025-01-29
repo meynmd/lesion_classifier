@@ -22,7 +22,8 @@ Models trained on Binary XEntropy loss for 20 epochs, with ADAM, base LR = .0002
 
 ### Baseline ResNet18 without Data Augmentations
 <img width="459" alt="Screenshot 2025-01-29 at 3 25 02 PM" src="https://github.com/user-attachments/assets/5412e8cd-ad6e-4f13-a1e7-90b324b46c81" /> </br>
-<img width="459" alt="Screenshot 2025-01-29 at 3 25 21 PM" src="https://github.com/user-attachments/assets/fcfe7519-590c-4ef4-a55a-a575f02ae99e" />
+<img width="459" alt="Screenshot 2025-01-29 at 3 27 44 PM" src="https://github.com/user-attachments/assets/17dc7757-53b5-485b-8e52-d1790e010ac9" />
+
 
 ### Baseline ResNet18 with Albumentations
 
