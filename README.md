@@ -2,12 +2,12 @@
 
 ## Installation
 - create and activate conda environment with python=3.9
-- install pytorch using following command:
+- install pytorch using the following command:
 `conda install pytorch::pytorch torchvision -c pytorch`
-  - or use appropriate command for your platform and GPU setup:
+  - or find the appropriate command for your platform and GPU setup:
 `https://pytorch.org/get-started/locally/`
-- conda install pip
-- pip install -r requirements.txt
+- `conda install pip`
+- `pip install -r requirements.txt`
   - ...or install pip dependencies manually...
     - numpy
     - pandas
@@ -49,3 +49,12 @@ Models trained on Binary XEntropy loss for 20 epochs, with ADAM, base LR = .0002
 
 ### ResNext50 with Albumentations
 <img width="459" alt="Screenshot 2025-01-29 at 4 17 27 PM" src="https://github.com/user-attachments/assets/31d46cbf-1d2a-41e6-a3a2-d87ec0dce945" />
+
+
+## Discussion
+For performance evaluation, I have focused heavily on the high-recall end of the PR curve, which is where such a tool would likely be useful, since false negatives could have catastrophic consequences.
+
+High precision and recall can be achieved with a relatively lightweight ResNet18. Straightforward image data augmentations (random scale, translate, rotate, shear, crop, RGB shift and contrast/brightness adjustment) make a significant difference in performance, particularly at high-recall operating points on the curve. If we constrain ourselves to operating at thresholds that achieve 99.9% or higher recall, the ResNet18 trained with augmentations reaches 70.8% precision, compared to 52.1% for the same network trained without augmentations.
+
+ResNeXt50 network underperforms the ResNet18, despite its higher capacity and being trained with the same data augmentations as the ResNet. It seems likely that a larger training dataset would be needed to take advantage of ResNeXt50's larger capacity.
+
