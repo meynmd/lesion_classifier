@@ -52,9 +52,11 @@ The following models were trained on Binary XEntropy loss for 20 epochs, with AD
 <img width="459" alt="Screenshot 2025-01-29 at 3 40 55 PM" src="https://github.com/user-attachments/assets/da1b63f5-396b-4ab5-8933-6cecbb4ec473" />
 
 ### ResNet18 with Albumentations
+The same ResNet18 was trained with image data augmentations using the Albumentations package: random scale, translation, rotation, shear, cropping, RGB and contrast/brightness adjustment.
 <img width="459" alt="Screenshot 2025-01-29 at 3 26 34 PM" src="https://github.com/user-attachments/assets/3dab94a3-69c4-488a-bece-a35a6177e231" />
 
 ### ResNext50 with Albumentations
+A ResNeXt50/32x4d was then trained using the same data augmentations as the ResNet18 with Albumentations. All hyperparameters, except the pre-cropped image size (232 vs. 256 pixels), and the network itself, were kept constant.
 <img width="459" alt="Screenshot 2025-01-29 at 4 17 27 PM" src="https://github.com/user-attachments/assets/31d46cbf-1d2a-41e6-a3a2-d87ec0dce945" />
 
 
