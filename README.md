@@ -63,5 +63,5 @@ For performance evaluation, I have focused heavily on the high-recall end of the
 
 High precision and recall can be achieved with a relatively lightweight ResNet18. Straightforward image data augmentations (random scale, translate, rotate, shear, crop, RGB shift and contrast/brightness adjustment) make a significant difference in performance, particularly at high-recall operating points on the curve. If we constrain ourselves to operating at thresholds that achieve 99.9% or higher recall, the ResNet18 trained with augmentations reaches 70.8% precision, compared to 52.1% for the same network trained without augmentations.
 
-ResNeXt50 network underperforms the ResNet18, despite its higher capacity and being trained with the same data augmentations as the ResNet. It seems likely that a larger training dataset would be needed to take advantage of ResNeXt50's larger capacity.
+ResNeXt50 underperforms ResNet18, despite its higher capacity and being trained with the same data augmentations as the ResNet. It seems likely that a larger training dataset would be needed to take advantage of ResNeXt50's larger capacity.
 
