@@ -7,14 +7,20 @@
   - or use appropriate command for your platform and GPU setup:
 `https://pytorch.org/get-started/locally/`
 - conda install pip
-- pip dependencies:
-  - pandas
-  - torcheval
-  - tqdm
-  - tensorboard
-  - transformers
-  - ipywidgets
-  - tensorflow>=2.16
+- pip install -r requirements.txt
+  - ...or install pip dependencies manually...
+    - numpy
+    - pandas
+    - torcheval
+    - tqdm
+    - tensorboard
+    - transformers
+    - matplotlib
+    - scikit-learn
+    - albumentations
+    - pillow
+    - ipywidgets
+    - tensorflow>=2.16
 
 
 ## Results
