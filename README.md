@@ -18,6 +18,8 @@
 
 
 ## Results
-### Baseline ResNet18
-<img width="458" alt="Screenshot 2025-01-29 at 12 19 43 PM" src="https://github.com/user-attachments/assets/a6843c74-0f95-4e9b-ba95-c2f1a52a7e89" /> <br />
-<img width="154" alt="Screenshot 2025-01-29 at 12 23 02 PM" src="https://github.com/user-attachments/assets/595113ab-9d74-4625-a9f5-34f874322349" />
+### Baseline ResNet18 without Data Augmentations
+
+
+### Baseline ResNet18 with Albumentations
+
