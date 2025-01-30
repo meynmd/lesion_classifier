@@ -56,7 +56,7 @@ As noted above, models, data utilities, and engine code can be found under `src/
 <img width="459" alt="Screenshot 2025-01-29 at 3 40 55 PM" src="https://github.com/user-attachments/assets/da1b63f5-396b-4ab5-8933-6cecbb4ec473" />
 
 ### ResNet18 with Albumentations
-The same ResNet18 was trained with image data augmentations using the Albumentations package: random scale, translation, rotation, shear, cropping, RGB and contrast/brightness adjustment.
+The same ResNet18 was trained with image data augmentations using the Albumentations package: random scale, translation, rotation, shear, cropping, RGB and contrast/brightness adjustment. <br/>
 <img width="459" alt="Screenshot 2025-01-29 at 3 26 34 PM" src="https://github.com/user-attachments/assets/3dab94a3-69c4-488a-bece-a35a6177e231" />
 
 ### ResNext50 with Albumentations
@@ -64,9 +64,10 @@ A ResNeXt50/32x4d was then trained using the same data augmentations as the ResN
 <img width="459" alt="Screenshot 2025-01-29 at 4 17 27 PM" src="https://github.com/user-attachments/assets/31d46cbf-1d2a-41e6-a3a2-d87ec0dce945" />
 
 <br/>
-<b> I then tested out a medical-imagery foundation model, Google Health's Derm Foundation (https://github.com/Google-Health/derm-foundation/tree/master). </b>
+I then tested out a medical-imagery foundation model, Google Health's Derm Foundation (https://github.com/Google-Health/derm-foundation/tree/master).
+### Derm Foundation medical image embedding model
 
-### After embedding the train and test sets using Derm Foundation, I trained a logistic regression classifier and a SVM on the embeddings of training-set images. On the test-set image embeddings, performance overall was lower than with either of the fine-tuned deep networks, logistic regression (the better of the two classifiers) still hit 50% precision at 99.9% recall.
+After embedding the train and test sets using Derm Foundation, I trained a logistic regression classifier and a SVM on the embeddings of training-set images. On the test-set image embeddings, performance overall was lower than with either of the fine-tuned deep networks, logistic regression (the better of the two classifiers) still hit 50% precision at 99.9% recall.
 <img width="474" alt="Screenshot 2025-01-30 at 3 15 36 PM" src="https://github.com/user-attachments/assets/cf66d4ca-9945-425b-91e0-2b4a5a573d51" />
 <br/>
 
