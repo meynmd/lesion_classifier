@@ -2,6 +2,7 @@ from pathlib import Path
 import datetime
 import argparse
 from typing import List
+import logging
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -22,8 +23,9 @@ def get_args():
         required=True
     )
     arg_parser.add_argument(
-        '--do-split', 
-        action='store_true'
+        '--val-split', 
+        type=float,
+        default=None
     )
 
     return arg_parser.parse_args()
@@ -51,6 +53,8 @@ def enumerate_dataset(
 
 
 def main():
+    logger = logging.getLogger('main')
+
     # get console args
     args = get_args()
     data_root = args.data_root
@@ -59,30 +63,44 @@ def main():
     if not output_root.exists():
         output_root.mkdir()
 
+    logger.info('finding data files...')
     df = enumerate_dataset(data_root)
+    logger.info(f'found {len(df)} image files')
 
-    if args.do_split:
+    if args.val_split:
+        logger.info(f'splitting into train and {args.val_split:.1%} validation sets')
         idx_train, idx_val = train_test_split(
             df.index,
-            test_size=0.05, 
+            test_size=args.val_split, 
             random_state=1
         )
         df.loc[idx_train, 'split'] = 'train'
         df.loc[idx_val, 'split'] = 'validation'
         df_train = df[df['split'] == 'train']
         df_val = df[df['split'] == 'validation']
+
+        logger.info('saving training/validation set metadata')
         train_filename = output_root / 'train.csv'
         val_filename = output_root / 'validation.csv'
-        print(f'saving {train_filename}, length {len(df_train)}')
-        print(f'saving {val_filename}, length {len(df_val)}')
+        n_pos_train = len(df_train[df_train['label'] == 1])
+        frac_pos_train = n_pos_train / len(df_train)
+        n_pos_val = len(df_val[df_val['label'] == 1])
+        frac_pos_val = n_pos_val / len(df_val)
+        logger.info(f'saving {train_filename}, length {len(df_train)}, {frac_pos_train:.1%} positive')
+        logger.info(f'saving {val_filename}, length {len(df_val)}, {frac_pos_val:.1%} positive')
         df_train.to_csv(train_filename)
         df_val.to_csv(val_filename, index=False)
     else:
+        logger.info('saving test set metadata')
         df.loc[:, 'split'] = 'test'
         test_filename = output_root / 'test.csv'
-        print(f'saving {test_filename}, length {len(df)}')
+        logger.info(f'saving {test_filename}, length {len(df)}')
         df.to_csv(test_filename, index=False)
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger('main')
+    
+    # logger.setLevel(logging.INFO)
     main()
