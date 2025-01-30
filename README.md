@@ -69,8 +69,9 @@ A ResNeXt50/32x4d was then trained using the same data augmentations as the ResN
 <br/>
 
 ### Derm Foundation medical image embedding model
-I then tested out a linear probe approach on a medical-imagery foundation model, Google Health's Derm Foundation (https://github.com/Google-Health/derm-foundation/tree/master). After embedding the train and test sets using Derm Foundation, I trained a logistic regression classifier and a SVM on the embeddings of training-set images. On the test-set image embeddings, performance overall was lower than with either of the fine-tuned deep networks, logistic regression (the better of the two classifiers) still hit 50% precision at 99.9% recall.
+I then tested out a linear probe approach on a medical-imagery foundation model, Google Health's Derm Foundation (https://github.com/Google-Health/derm-foundation/tree/master). After embedding the train and test sets using Derm Foundation, I trained a logistic regression classifier and a SVM on the embeddings of training-set images. On the test-set image embeddings, performance overall was lower than with either of the fine-tuned deep networks, logistic regression (the better of the two classifiers) still hit 50% precision at 99.9% recall. <br/>
 <img width="474" alt="Screenshot 2025-01-30 at 3 15 36 PM" src="https://github.com/user-attachments/assets/cf66d4ca-9945-425b-91e0-2b4a5a573d51" />
+<br/>
 <br/>
 
 ## Discussion
