@@ -22,7 +22,7 @@
     - ipywidgets
     - tensorflow>=2.16
     - keras
-- the package code for models, data, engine, etc. is found in <repo-root>/src/lesion_classifier, so add this to your PYTHONPATH
+- the package code for models, data, engine, etc. is found in `<repo-root>`/src/lesion_classifier, so add this to your PYTHONPATH
 
 ## Usage
 Prepare training, validation and test splits using `scripts/prepare_split_data.py`. For the current dataset, it is recommended to split the preexisting `train` data into training and validation splits. For example, to produce datalist CSV files with a 95/5 train/val split, you can run the following command:
