@@ -48,6 +48,7 @@ As noted above, models, data utilities, and engine code can be found under `src/
 ## Results
 <img width="474" alt="Screenshot 2025-01-30 at 3 02 45 PM" src="https://github.com/user-attachments/assets/0c2a9aec-d955-45bc-8311-c47c81242176" />
 <br/>
+<br/>
 
 The following 3 models were trained on Binary XEntropy loss for 20 epochs, with ADAM, base LR = .0002 with 2 epoch warmup and cosine decay. Initialization from ImageNet pretrained parameters. Classifier layer initizlied with Xavier.
 <br/>
@@ -68,7 +69,7 @@ A ResNeXt50/32x4d was then trained using the same data augmentations as the ResN
 <br/>
 
 ### Derm Foundation medical image embedding model
-I then tested out a medical-imagery foundation model, Google Health's Derm Foundation (https://github.com/Google-Health/derm-foundation/tree/master). After embedding the train and test sets using Derm Foundation, I trained a logistic regression classifier and a SVM on the embeddings of training-set images. On the test-set image embeddings, performance overall was lower than with either of the fine-tuned deep networks, logistic regression (the better of the two classifiers) still hit 50% precision at 99.9% recall.
+I then tested out a linear probe approach on a medical-imagery foundation model, Google Health's Derm Foundation (https://github.com/Google-Health/derm-foundation/tree/master). After embedding the train and test sets using Derm Foundation, I trained a logistic regression classifier and a SVM on the embeddings of training-set images. On the test-set image embeddings, performance overall was lower than with either of the fine-tuned deep networks, logistic regression (the better of the two classifiers) still hit 50% precision at 99.9% recall.
 <img width="474" alt="Screenshot 2025-01-30 at 3 15 36 PM" src="https://github.com/user-attachments/assets/cf66d4ca-9945-425b-91e0-2b4a5a573d51" />
 <br/>
 
@@ -78,4 +79,6 @@ For performance evaluation, I have focused heavily on the high-recall end of the
 High precision and recall can be achieved with a relatively lightweight ResNet18. Straightforward image data augmentations (random scale, translate, rotate, shear, crop, RGB shift and contrast/brightness adjustment) make a significant difference in performance, particularly at high-recall operating points on the curve. If we constrain ourselves to operating at thresholds that achieve 99.9% or higher recall, the ResNet18 trained with augmentations reaches 70.8% precision, compared to 52.1% for the same network trained without augmentations.
 
 ResNeXt50 underperforms ResNet18, despite its higher capacity and being trained with the same data augmentations as the ResNet. It seems likely that a larger training dataset would be needed to take advantage of ResNeXt50's larger capacity.
+
+Using Derm Foundation as a general medical-image feature extractor is an interesting alternative, as it requires no fine tuning; but a linear probe of the Derm Foundation embeddings underperforms all fine-tuned deep neural nets (by ~5 points F1 compared to the closest) in this experiment.
 
