@@ -21,11 +21,13 @@
     - pillow
     - ipywidgets
     - tensorflow>=2.16
+    - keras
+- the package code for models, data, engine, etc. is found in <repo-root>/src/lesion_classifier, so add this to your PYTHONPATH
 
 ## Usage
 Prepare training, validation and test splits using `scripts/prepare_split_data.py`. For the current dataset, it is recommended to split the preexisting `train` data into training and validation splits. For example, to produce datalist CSV files with a 95/5 train/val split, you can run the following command:
 ```
- python scripts/prepare_split_data.py -d <image-root>/train -o <image-root> --do-split
+ python scripts/prepare_split_data.py -d <image-root>/train -o <image-root> --val-split 0.05
 ```
 The test set does not have to be split, of course, but for consistency of data loading, we also produce a CSV list of files to test on:
 ```
