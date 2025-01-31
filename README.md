@@ -50,7 +50,7 @@ As noted above, models, data utilities, and engine code can be found under `src/
 <br/>
 <br/>
 
-The following 3 models were trained on Binary XEntropy loss for 20 epochs, with ADAM, base LR = .0002 with 2 epoch warmup and cosine decay. Initialization from ImageNet pretrained parameters. Classifier layer initizlied with Xavier.
+The following 3 models were trained using Binary Cross Entropy loss for 20 epochs, with ADAM, base LR = .0002 with a 2 epoch warmup and cosine decay. Initialization from ImageNet pretrained parameters. Classifier layer initizlied with Xavier.
 <br/>
 
 ### Baseline ResNet18 without Data Augmentations
