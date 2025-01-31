@@ -1,7 +1,7 @@
 # lesion_classifier
 
 ## Installation
-- create and activate conda environment with python=3.9
+- create and activate conda environment
 - install pytorch using the following command:
 `conda install pytorch::pytorch torchvision -c pytorch`
   - or find the appropriate command for your platform and GPU setup:
